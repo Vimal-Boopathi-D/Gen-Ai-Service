@@ -5,17 +5,19 @@ import com.vibo.GenAIPractice.shared.DataInitializer;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.embedding.EmbeddingModel;
 import org.springframework.ai.vectorstore.VectorStore;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Component
+@Service
 public class EmbeddingServiceImpl implements EmbeddingService {
 
     private final EmbeddingModel embeddingModel;
     private final VectorStore vectorStore;
 
-    public EmbeddingServiceImpl(EmbeddingModel embeddingModel, VectorStore vectorStore) {
+    public EmbeddingServiceImpl(@Qualifier("ollamaEmbeddingModel") EmbeddingModel embeddingModel, VectorStore vectorStore) {
         this.embeddingModel = embeddingModel;
         this.vectorStore = vectorStore;
     }

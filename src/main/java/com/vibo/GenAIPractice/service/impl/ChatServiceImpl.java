@@ -6,11 +6,11 @@ import com.vibo.GenAIPractice.service.ChatService;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.PromptTemplate;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Map;
 
-@Component
+@Service
 public class ChatServiceImpl implements ChatService {
 
     private final ChatClient chatClient;
