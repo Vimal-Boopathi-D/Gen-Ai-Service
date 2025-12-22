@@ -116,6 +116,7 @@
 	</dependencyManagement>
 
 	<build>
+		<finalName>ai-service</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

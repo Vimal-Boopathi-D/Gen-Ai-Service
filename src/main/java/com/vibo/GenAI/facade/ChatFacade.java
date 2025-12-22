@@ -5,6 +5,7 @@ import com.vibo.GenAI.service.ChatService;
 import com.vibo.GenAI.service.RAGService;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Set;
 
 
@@ -77,4 +78,30 @@ public class ChatFacade {
                 .anyMatch(lowerMsg::contains);
     }
 
+    public ApiResponse<List<String>> listOutputConverting(MessageDto messageDto) {
+        try {
+            List<String> response = chatService.listOpConverting(messageDto.getMessage());
+            return new ApiResponse<>(200,"responsed successfully",response);
+        } catch (Exception e) {
+            return new ApiResponse<>(409,e.getMessage(),null);
+        }
+    }
+
+    public ApiResponse<Movie> beanOutputConverting(MessageDto messageDto) {
+        try {
+            Movie response = chatService.beanOpConverting(messageDto.getMessage());
+            return new ApiResponse<>(200,"responsed successfully",response);
+        } catch (Exception e) {
+            return new ApiResponse<>(409,e.getMessage(),null);
+        }
+    }
+
+    public ApiResponse<List<Movie>> listOfBeanOutputConverting(MessageDto messageDto) {
+        try {
+            List<Movie> response = chatService.listOfBeanOpConverting(messageDto.getMessage());
+            return new ApiResponse<>(200,"responsed successfully",response);
+        } catch (Exception e) {
+            return new ApiResponse<>(409,e.getMessage(),null);
+        }
+    }
 }

@@ -7,6 +7,8 @@ import org.springframework.ai.chat.memory.MessageWindowChatMemory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/ai")
 public class ChatController {
@@ -20,16 +22,16 @@ public class ChatController {
     }
 
     @PostMapping("/chat")
-    public ResponseEntity<ApiResponse<Response>> chat(@RequestBody MessageDto  message){
+    public ResponseEntity<ApiResponse<Response>> chat(@RequestBody MessageDto message) {
 
-        ApiResponse<Response> response=chatFacade.chat(message);
+        ApiResponse<Response> response = chatFacade.chat(message);
         return ResponseEntity.status(response.getStatusCode()).body(response);
     }
 
     @PostMapping("/recommend/course")
-    public ResponseEntity<ApiResponse<CourseRecomendResponseDto>> recommendMovie(@RequestBody CourseRecomendRequestDto courseRecomendRequestDto){
+    public ResponseEntity<ApiResponse<CourseRecomendResponseDto>> recommendMovie(@RequestBody CourseRecomendRequestDto courseRecomendRequestDto) {
 
-        ApiResponse<CourseRecomendResponseDto> response=chatFacade.recommendCourse(courseRecomendRequestDto);
+        ApiResponse<CourseRecomendResponseDto> response = chatFacade.recommendCourse(courseRecomendRequestDto);
         return ResponseEntity.status(response.getStatusCode()).body(response);
     }
 
@@ -37,6 +39,25 @@ public class ChatController {
     public ResponseEntity<ApiResponse<String>> message(@RequestBody MessageDto dto) {
 
         ApiResponse<String> response = chatFacade.routeMessage(dto);
+        return ResponseEntity.status(response.getStatusCode()).body(response);
+    }
+
+    @PostMapping("/list/movies")
+    public ResponseEntity<ApiResponse<List<String>>> listOutputConverting(@RequestBody MessageDto messageDto) {
+
+        ApiResponse<List<String>> response = chatFacade.listOutputConverting(messageDto);
+        return ResponseEntity.status(response.getStatusCode()).body(response);
+    }
+
+    @PostMapping("/bean/movies")
+    public ResponseEntity<ApiResponse<Movie>> beanOutputConverting(@RequestBody MessageDto messageDto) {
+        ApiResponse<Movie> response = chatFacade.beanOutputConverting(messageDto);
+        return ResponseEntity.status(response.getStatusCode()).body(response);
+    }
+
+    @PostMapping("list/bean/movies")
+    public ResponseEntity<ApiResponse<List<Movie>>> listOfBeanOutputConverting(@RequestBody MessageDto messageDto) {
+        ApiResponse<List<Movie>> response = chatFacade.listOfBeanOutputConverting(messageDto);
         return ResponseEntity.status(response.getStatusCode()).body(response);
     }
 

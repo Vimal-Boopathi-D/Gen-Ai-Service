@@ -6,8 +6,13 @@ import com.vibo.GenAI.service.ChatService;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.PromptTemplate;
+import org.springframework.ai.converter.BeanOutputConverter;
+import org.springframework.ai.converter.ListOutputConverter;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.core.convert.support.DefaultConversionService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -86,5 +91,56 @@ public class ChatServiceImpl implements ChatService {
         return response;
     }
 
+    @Override
+    public List<String> listOpConverting(String message) {
+
+        String promptMessage = """
+                Name top 5 only movies name
+                of {name}
+                {format}
+                """;
+        ListOutputConverter opConverter = new ListOutputConverter(new DefaultConversionService());
+
+        PromptTemplate template =new PromptTemplate(promptMessage);
+        Prompt prompt = template.create(Map.of("name",message,"format",opConverter.getFormat()));
+
+        String response = chatClient.prompt(prompt).call().content();
+        if (response == null){
+            throw new IllegalArgumentException("AI not responsed");
+        }
+       return opConverter.convert(response);
+    }
+
+    @Override
+    public Movie beanOpConverting(String message) {
+        String promptMessage = """
+                Any one movie
+                of {name}
+                {format}
+                """;
+
+        BeanOutputConverter<Movie> opConverter = new BeanOutputConverter<>(Movie.class);
+
+        PromptTemplate template =new PromptTemplate(promptMessage);
+        Prompt prompt = template.create(Map.of("name",message,"format",opConverter.getFormat()));
+
+        return opConverter.convert(chatClient.prompt(prompt).call().content());
+    }
+
+
+    @Override
+    public List<Movie> listOfBeanOpConverting(String message) {
+        String promptMessage = """
+                Top 5 movies
+                of {name}
+                {format}
+                """;
+
+        BeanOutputConverter<List<Movie>> opConverter = new BeanOutputConverter<>(new ParameterizedTypeReference<List<Movie>>() {});
+        PromptTemplate template =new PromptTemplate(promptMessage);
+        Prompt prompt = template.create(Map.of("name",message,"format",opConverter.getFormat()));
+
+        return opConverter.convert(chatClient.prompt(prompt).call().content());
+    }
 
 }
