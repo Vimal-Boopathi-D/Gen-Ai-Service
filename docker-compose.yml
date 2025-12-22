@@ -14,18 +14,5 @@ services:
     volumes:
       - pgvector-data:/var/lib/postgresql/data
 
-  sd-webui:
-    image: ghcr.io/jim60105/stable-diffusion-webui:v1.9.4-runtime-deps
-    container_name: sd-webui
-    ports:
-      - "7860:7860"
-    restart: unless-stopped
-    environment:
-      - CLI_ARGS=--listen --api  # enable API
-    volumes:
-      - ./sd-models:/data/models
-      - ./sd-output:/data/output
-
-
 volumes:
   pgvector-data:

@@ -147,3 +147,189 @@ Description: Quickly removes wrinkles from garments using continuous steam.
 Price: $31.99
 Category: Home Appliances
 Features: 25-second heat-up, Lightweight design, Auto shut-off, 180ml tank
+
+
+Title: Mi Smart Band 7
+Description: Smart fitness band with AMOLED display and health tracking.
+Price: ₹3,499
+Discount: 22%
+Category: Accessories
+Rating: 4.5
+Features: AMOLED display, SpO₂ monitoring, 120 sports modes
+
+Title: Car Mobile Holder
+Description: Strong dashboard phone holder with firm grip.
+Price: ₹349
+Discount: 30%
+Category: Accessories
+Rating: 4.5
+Features: Dashboard mount, Strong grip, Easy installation
+Title: Samsung 128GB Evo MicroSD
+Description: High-speed memory card suitable for 4K video recording.
+Price: ₹899
+Discount: 25%
+Category: Accessories
+Rating: 4.8
+Features: 4K support, Waterproof, A2 rated
+
+Title: Samsung 25W Fast Charger
+Description: High-speed USB-C charger for fast and safe charging.
+Price: ₹999
+Discount: 15%
+Category: Accessories
+Rating: 4.7
+Features: USB-C, Super fast charging, Compact design
+
+Title: JBL Go 3
+Description: Compact portable Bluetooth speaker with waterproof design.
+Price: ₹2,999
+Discount: 20%
+Category: Accessories
+Rating: 4.7
+Features: IP67 waterproof, Punchy bass, Portable
+
+Title: Boat Airdopes 161
+Description: Affordable wireless earbuds with powerful bass and long battery life.
+Price: ₹999
+Discount: 40%
+Category: Accessories
+Rating: 4.3
+Features: Bass boost, 40H playback, Fast pairing
+
+Title: Apple AirPods Pro
+Description: Premium wireless earbuds with active noise cancellation.
+Price: ₹18,999
+Discount: 8%
+Category: Accessories
+Rating: 4.9
+Features: ANC, Spatial audio, Wireless charging case
+
+Title: MacBook Air M1
+Description: Ultra-efficient laptop with Apple M1 chip and long battery life.
+Price: ₹79,000
+Discount: 10%
+Category: Brand New Laptops
+Rating: 4.9
+Features: Apple M1 chip, Retina display, 18-hour battery
+
+Title: Dell Inspiron 15 (2023)
+Description: Reliable everyday laptop with fast SSD and Intel processor.
+Price: ₹35,000
+Discount: 20%
+Category: Brand New Laptops
+Rating: 4.2
+Features: Intel i5, 8GB RAM, 512GB SSD
+
+Title: iPhone X (Used)
+Description: Refurbished iPhone in good condition with Face ID support.
+Price: ₹14,000
+Discount: 20%
+Category: Second Hand Mobiles
+Rating: 4.2
+Features: Face ID, 64GB storage, Dual camera
+
+Title: Vivo V29
+Description: Stylish smartphone with Aura Light and excellent selfie camera.
+Price: ₹28,000
+Discount: 11%
+Category: Brand New Mobiles
+Rating: 4.5
+Features: AMOLED display, Aura Light, 50MP selfie camera
+
+Title: Redmi Note 12 Pro
+Description: Feature-packed phone with AMOLED 120Hz display and powerful camera.
+Price: ₹18,000
+Discount: 12%
+Category: Brand New Mobiles
+Rating: 4.6
+Features: AMOLED 120Hz, 50MP camera, 5000mAh battery
+
+Title: Samsung Galaxy S21
+Description: High-performance smartphone with Dynamic AMOLED display and 64MP camera.
+Price: ₹22,000
+Discount: 10%
+Category: Brand New Mobiles
+Rating: 4.5
+Features: Dynamic AMOLED, 8GB RAM, 64MP camera, Fast performance
+
+Title: iPhone 12
+Description: OLED display smartphone powered by A14 Bionic chip with dual camera system.
+Price: ₹25,000
+Discount: 15%
+Category: Brand New Mobiles
+Rating: 4.8
+Features: OLED display, A14 Bionic, Dual camera, Premium design
+
+Shop Name: Mobo Shop
+
+Business Type:
+Mobile sales, mobile repair services, accessories, laptops, CCTV installation, and tech services.
+
+Location:
+Mobo Shop is located in Kangayam, Tamil Nadu, India.
+
+About Mobo Shop:
+Mobo Shop is a premium mobile and technology store offering both online and offline services.
+The shop focuses on quality products, transparent pricing, and customer-first service.
+
+Products Offered:
+- Brand new mobile phones
+- Second-hand (used) mobiles with quality checks
+- Mobile accessories
+- Laptops
+- Gadgets and electronic devices
+
+Services Offered:
+- Mobile repair services
+- Screen replacement
+- Battery replacement
+- Chip-level repair
+- Software diagnostics
+- Same-day mobile repair for most issues
+- Professional CCTV installation services
+- Laptop repair and diagnostics
+
+Website Features:
+- Online product browsing
+- Category-based product filtering
+- Search functionality
+- Shopping cart and checkout
+- Secure payment options including Cash on Delivery and Online Payment
+- Order confirmation and invoice download
+- Live AI chatbot assistance
+- Customer support and contact forms
+
+Repair Process:
+1. Device inspection
+2. Deep diagnosis
+3. Transparent quotation
+4. Professional repair using premium parts
+5. Quality checks
+6. Safe packaging
+7. Fast delivery or in-store pickup
+
+Customer Experience:
+- Certified technicians
+- Genuine spare parts
+- Transparent pricing
+- Fast turnaround time
+- 24/7 customer support
+- Trusted by thousands of customers
+
+Vision:
+To deliver reliable, fast, and high-quality mobile and technology solutions with honesty and care.
+
+Mission:
+To provide customer-friendly services, modern tech solutions, and a smooth shopping and repair experience.
+
+Operating Hours:
+Open daily from morning to night (as per store availability).
+
+Support:
+Customers can contact Mobo Shop through phone, email, website contact form, or live chat.
+
+Summary:
+Mobo Shop is a trusted technology store in Kangayam  near Eeswaran kovil offering mobile sales, expert repairs, accessories, laptops, and CCTV services through both a physical store and a modern website.
+
+Summary:
+Mobo Shop is a trusted technology store in Kangayam  near Eeswaran kovil offering mobile sales, expert repairs, accessories, laptops, and CCTV services through both a physical store and a modern website.
