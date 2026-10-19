@@ -1,47 +1,35 @@
 package com.vibo.GenAI.service.impl;
 
 import com.vibo.GenAI.service.AudioService;
-import org.springframework.ai.audio.transcription.AudioTranscriptionPrompt;
-import org.springframework.ai.audio.tts.TextToSpeechPrompt;
-import org.springframework.ai.openai.OpenAiAudioSpeechModel;
-import org.springframework.ai.openai.OpenAiAudioSpeechOptions;
-import org.springframework.ai.openai.OpenAiAudioTranscriptionModel;
-import org.springframework.ai.openai.OpenAiAudioTranscriptionOptions;
-import org.springframework.ai.openai.api.OpenAiAudioApi;
+import com.vibo.GenAI.huggingface.HuggingFaceAudioTranscriptionModel;
+import com.vibo.GenAI.huggingface.HuggingFaceAudioSpeechModel;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import java.io.IOException;
 
 @Service
 public class AudioServiceImpl implements AudioService {
 
-    private final OpenAiAudioTranscriptionModel audioTranscriptionModel;
-    private final OpenAiAudioSpeechModel aiAudioSpeechModel;
+    private final HuggingFaceAudioTranscriptionModel transcriptionModel;
+    private final HuggingFaceAudioSpeechModel speechModel;
 
-    public AudioServiceImpl(OpenAiAudioTranscriptionModel audioTranscriptionModel, OpenAiAudioSpeechModel aiAudioSpeechModel) {
-        this.audioTranscriptionModel = audioTranscriptionModel;
-        this.aiAudioSpeechModel = aiAudioSpeechModel;
+    public AudioServiceImpl(HuggingFaceAudioTranscriptionModel transcriptionModel, HuggingFaceAudioSpeechModel speechModel) {
+        this.transcriptionModel = transcriptionModel;
+        this.speechModel = speechModel;
     }
 
     @Override
     public String audioToText(MultipartFile file) {
-
-        OpenAiAudioTranscriptionOptions options = new OpenAiAudioTranscriptionOptions.Builder()
-                .language("ta")
-                .responseFormat(OpenAiAudioApi.TranscriptResponseFormat.SRT) // helps to provide timestamp
-                .build();
-
-        AudioTranscriptionPrompt prompt = new AudioTranscriptionPrompt(file.getResource(),options);
-        return audioTranscriptionModel.call(prompt).getResult().getOutput();
-
+        try {
+            byte[] audioBytes = file.getBytes();
+            return transcriptionModel.transcribe(audioBytes);
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to read audio file", e);
+        }
     }
 
     @Override
     public byte[] textToAudio(String text) {
-        OpenAiAudioSpeechOptions options = new OpenAiAudioSpeechOptions.Builder()
-                .voice(OpenAiAudioApi.SpeechRequest.Voice.ECHO)
-                .speed(2.0)
-                .build();
-        TextToSpeechPrompt prompt = new TextToSpeechPrompt(text,options);
-        return aiAudioSpeechModel.call(prompt).getResult().getOutput();
+        return speechModel.generateSpeech(text);
     }
 }

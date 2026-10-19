@@ -21,7 +21,6 @@ public class ImageGenController {
 
     @PostMapping("/genImage")
     public ResponseEntity<ApiResponse<String>> generateImage(@RequestBody MessageDto dto){
-
         ApiResponse<String> response= imageGenFacade.genImage(dto);
         return ResponseEntity.status(response.getStatusCode()).body(response);
     }

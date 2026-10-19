@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.vibo</groupId>
-	<artifactId>OllamaAIPractice</artifactId>
+	<artifactId>gen-ai-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>OllamaAIPractice</name>
-	<description>Demo project for Spring Boot</description>
+	<name>GenAiService</name>
+	<description>Spring AI Project using Hugging Face</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -27,10 +27,14 @@
 		<url/>
 	</scm>
 	<properties>
-		<java.version>25</java.version>
+		<java.version>21</java.version>
 		<spring-ai.version>1.1.2</spring-ai.version>
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -44,16 +48,32 @@
 			<version>2.6.0</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.ai</groupId>
-			<artifactId>spring-ai-starter-model-ollama</artifactId>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.springframework.ai/spring-ai-starter-model-openai -->
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.ai</groupId>-->
+<!--			<artifactId>spring-ai-starter-model-ollama</artifactId>-->
+		<!-- We MUST keep this dependency even if we don't use OpenAI, because it provides ChatClient autoconfiguration -->
 		<dependency>
 			<groupId>org.springframework.ai</groupId>
 			<artifactId>spring-ai-starter-model-openai</artifactId>
 		</dependency>
+
+		<!-- Source: https://mvnrepository.com/artifact/org.springframework.ai/spring-ai-starter-model-huggingface -->
+		<dependency>
+			<groupId>org.springframework.ai</groupId>
+			<artifactId>spring-ai-starter-model-huggingface</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		
+
+		<!-- Source: https://mvnrepository.com/artifact/org.springframework.ai/spring-ai-starter-model-transformers -->
+		<dependency>
+			<groupId>org.springframework.ai</groupId>
+			<artifactId>spring-ai-starter-model-transformers</artifactId>
+			<scope>compile</scope>
+		</dependency>
+
+
+
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -101,6 +121,14 @@
 			<artifactId>spring-boot-docker-compose</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.ai</groupId>
+			<artifactId>spring-ai-pdf-document-reader</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>

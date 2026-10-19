@@ -6,6 +6,7 @@ import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.memory.MessageWindowChatMemory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -15,8 +16,6 @@ public class ChatController {
 
     private final ChatFacade chatFacade;
 
-    ChatMemory chatMemory = MessageWindowChatMemory.builder().maxMessages(20).build();
-
     public ChatController(ChatFacade chatFacade) { // for single model use Builder
         this.chatFacade = chatFacade;
     }
@@ -25,6 +24,15 @@ public class ChatController {
     public ResponseEntity<ApiResponse<Response>> chat(@RequestBody MessageDto message) {
 
         ApiResponse<Response> response = chatFacade.chat(message);
+        return ResponseEntity.status(response.getStatusCode()).body(response);
+    }
+
+    @PostMapping("/chat/image")
+    public ResponseEntity<ApiResponse<Response>> chatWithImage(
+            @RequestParam("message") String message,
+            @RequestPart("file") MultipartFile file) {
+
+        ApiResponse<Response> response = chatFacade.chatWithImage(message, file);
         return ResponseEntity.status(response.getStatusCode()).body(response);
     }
 

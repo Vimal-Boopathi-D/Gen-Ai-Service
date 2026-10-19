@@ -1,5 +1,14 @@
-FROM eclipse-temurin:25-jre
+FROM eclipse-temurin:21-jdk AS build
 WORKDIR /app
-COPY target/ai-service.jar app.jar
+COPY mvnw .
+COPY .mvn .mvn
+COPY pom.xml .
+COPY src src
+RUN chmod +x mvnw
+RUN ./mvnw clean package -DskipTests
+
+FROM eclipse-temurin:21-jre
+WORKDIR /app
+COPY --from=build /app/target/ai-service.jar app.jar
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","app.jar"]
