@@ -12,6 +12,5 @@ public interface ChatService {
     CourseRecomendResponseDto recommendCourse(CourseRecomendRequestDto courseRecomendRequestDto);
     List<String> listOpConverting(String message);
     Movie beanOpConverting(String message);
-
     List<Movie> listOfBeanOpConverting(String message);
 }
