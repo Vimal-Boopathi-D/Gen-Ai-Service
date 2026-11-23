@@ -24,11 +24,6 @@ public class ChatServiceImpl implements ChatService {
         this.chatClient = chatClient;
     }
 
-    //      for multiple model use
-    //    public OllamaChatController(OllamaChatModel ollamaChatModel) {
-    //        this.chatClient = ChatClient.create(ollamaChatModel);
-    //    }
-
     @Override
     public Response chat(MessageDto message){
 
