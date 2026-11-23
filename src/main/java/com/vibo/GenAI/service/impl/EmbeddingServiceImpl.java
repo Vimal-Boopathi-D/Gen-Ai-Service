@@ -15,7 +15,7 @@ public class EmbeddingServiceImpl implements EmbeddingService {
     private final EmbeddingModel embeddingModel;
     private final VectorStore vectorStore;
 
-    public EmbeddingServiceImpl(@Qualifier("ollamaEmbeddingModel") EmbeddingModel embeddingModel, VectorStore vectorStore) {
+    public EmbeddingServiceImpl(EmbeddingModel embeddingModel, VectorStore vectorStore) {
         this.embeddingModel = embeddingModel;
         this.vectorStore = vectorStore;
     }

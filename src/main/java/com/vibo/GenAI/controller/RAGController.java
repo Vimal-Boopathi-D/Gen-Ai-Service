@@ -20,7 +20,6 @@ public class RAGController {
 
     @PostMapping("/ask")
     public ResponseEntity<ApiResponse<String>> chatUsingRag(@RequestBody MessageDto dto){
-
         ApiResponse<String> response = ragFacade.chatUsingRag(dto);
         return ResponseEntity.status(response.getStatusCode()).body(response);
     }

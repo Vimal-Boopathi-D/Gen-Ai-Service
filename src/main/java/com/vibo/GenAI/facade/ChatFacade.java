@@ -1,7 +1,9 @@
 package com.vibo.GenAI.facade;
 
 import com.vibo.GenAI.dto.*;
+import com.vibo.GenAI.service.AudioService;
 import com.vibo.GenAI.service.ChatService;
+import com.vibo.GenAI.service.ImageGenService;
 import com.vibo.GenAI.service.RAGService;
 import org.springframework.stereotype.Component;
 
@@ -14,18 +16,46 @@ public class ChatFacade {
 
     private final ChatService chatService;
     private final RAGService ragService;
+    private final ImageGenService imageGenService;
+    private final AudioService audioService;
 
-    public ChatFacade(ChatService chatService, RAGService ragService) {
+    public ChatFacade(ChatService chatService, RAGService ragService, ImageGenService imageGenService, AudioService audioService) {
         this.chatService = chatService;
         this.ragService = ragService;
+        this.imageGenService = imageGenService;
+        this.audioService = audioService;
     }
 
-    public ApiResponse<Response> chat(MessageDto message) {
+    public ApiResponse<Response> chat(MessageDto dto) {
       try{
-        Response response = chatService.chat(message);
+        String msg = dto.getMessage().toLowerCase();
+        Response response = new Response();
+        
+        if (msg.contains("generate an image") || msg.contains("create an image") || msg.contains("draw") || msg.contains("picture of") || msg.contains("image")) {
+            String b64 = imageGenService.genImage(dto.getMessage());
+            response.setResponse("IMAGE_BASE64:" + b64);
+        } else if (msg.contains("generate audio") || msg.contains("speak") || msg.contains("say") || msg.contains("text to speech")) {
+            String textToSpeak = dto.getMessage().replaceFirst("(?i)(generate audio|speak|say|text to speech)\\s*(of|about|for)?\\s*", "");
+            byte[] audioBytes = audioService.textToAudio(textToSpeak.trim().isEmpty() ? dto.getMessage() : textToSpeak.trim());
+            String b64 = java.util.Base64.getEncoder().encodeToString(audioBytes);
+            response.setResponse("AUDIO_BASE64:" + b64);
+        } else {
+            response = chatService.chat(dto);
+        }
         return new ApiResponse<>(200, "responded successfully", response);
     } catch (Exception e) {
         return new ApiResponse<>(409,e.getMessage(),null);
+        }
+    }
+
+    public ApiResponse<Response> chatWithImage(String message, org.springframework.web.multipart.MultipartFile file) {
+        try {
+            String result = imageGenService.analyzeImage(message, file);
+            Response response = new Response();
+            response.setResponse(result);
+            return new ApiResponse<>(200, "responded successfully", response);
+        } catch (Exception e) {
+            return new ApiResponse<>(409, e.getMessage(), null);
         }
     }
 
